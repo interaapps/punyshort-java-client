@@ -51,6 +51,6 @@ class Test {
 	<dependency>
 	    <groupId>com.github.interaapps</groupId>
 	    <artifactId>punyshort-java-client</artifactId>
-	    <version>1.0 <!-- TAG --></version>
+	    <version>1.1 <!-- TAG --></version>
 	</dependency>
 ```

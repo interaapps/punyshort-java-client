@@ -84,7 +84,7 @@ public class PunyshortAPI extends HTTPClient {
         return getLink(name, null);
     }
 
-    public String login(String iaAuthCode){
-        return get("/ia/auth/user/login").query("userkey", iaAuthCode).execute().cookie("auth").getValue();
+    public static String login(String iaAuthCode){
+        return new PunyshortAPI().get("/ia/auth/user/login").query("userkey", iaAuthCode).execute().cookie("auth").getValue();
     }
 }
