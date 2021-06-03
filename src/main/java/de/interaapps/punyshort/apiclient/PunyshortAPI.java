@@ -47,7 +47,9 @@ public class PunyshortAPI extends HTTPClient {
     }
 
     public ShortenLinkResponse shorten(String link, String name, String domain){
-        return post("/api/v2/short", new ShortenLinkRequest(link, name)).query("domain", domain == null ? defaultDomain : domain).object(ShortenLinkResponse.class);
+        ShortenLinkResponse response = post("/api/v2/short", new ShortenLinkRequest(link, name)).query("domain", domain == null ? defaultDomain : domain).object(ShortenLinkResponse.class);
+        response.setPunyshortAPI(this);
+        return response;
     }
 
     public ShortenLinkResponse shorten(String link, String name){
@@ -69,7 +71,9 @@ public class PunyshortAPI extends HTTPClient {
 
     public LinkInformation getLink(String name, String domain){
         try {
-            return get("/api/v2/getinformation/"+URLEncoder.encode(name, "utf-8")).query("domain", domain == null ? defaultDomain : domain).object(LinkInformation.class);
+            LinkInformation information = get("/api/v2/getinformation/" + URLEncoder.encode(name, "utf-8")).query("domain", domain == null ? defaultDomain : domain).object(LinkInformation.class);
+            information.set
+            return information;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

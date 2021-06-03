@@ -1,5 +1,7 @@
 package de.interaapps.punyshort.apiclient.response;
 
+import de.interaapps.punyshort.apiclient.PunyshortAPI;
+
 import java.sql.Timestamp;
 import java.util.Map;
 
@@ -14,6 +16,8 @@ public class LinkInformation {
     private Map<String, Integer> os;
     private Map<String, Integer> click;
     private Timestamp created;
+
+    private transient PunyshortAPI punyshortAPI;
 
     public String getDomain() {
         return domain;
@@ -49,5 +53,17 @@ public class LinkInformation {
 
     public Timestamp getCreated() {
         return created;
+    }
+
+    public void setPunyshortAPI(PunyshortAPI punyshortAPI) {
+        this.punyshortAPI = punyshortAPI;
+    }
+
+    public boolean delete(){
+        return punyshortAPI.deleteLink(id);
+    }
+
+    public boolean editURL(String url){
+        return punyshortAPI.editLink(id, url);
     }
 }
