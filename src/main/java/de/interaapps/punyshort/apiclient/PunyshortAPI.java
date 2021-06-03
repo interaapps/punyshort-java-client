@@ -72,7 +72,7 @@ public class PunyshortAPI extends HTTPClient {
     public LinkInformation getLink(String name, String domain){
         try {
             LinkInformation information = get("/api/v2/getinformation/" + URLEncoder.encode(name, "utf-8")).query("domain", domain == null ? defaultDomain : domain).object(LinkInformation.class);
-            information.set
+            information.setPunyshortAPI(this);
             return information;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
